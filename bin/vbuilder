@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'vbuilder/generator'
+
+exit Vbuilder::Generator::Application.run!(*ARGV)
+

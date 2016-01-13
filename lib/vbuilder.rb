@@ -1,5 +1,5 @@
 require "vbuilder/version"
 
-module Vbuilder
-  # Your code goes here...
+class Vbuilder
+    autoload :Generator, 'vbuilder/generator'
 end
