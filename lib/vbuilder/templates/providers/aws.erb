@@ -1,0 +1,17 @@
+    config.vm.provider :<%= vm_provider %> do |<%= vm_provider %>, override|
+        <%= vm_provider %>.access_key_id = ""
+        <%= vm_provider %>.secret_access_key = ""
+        <%= vm_provider %>.keypair_name = ""
+
+        <%= vm_provider %>.ami = ""
+        <%= vm_provider %>.instance_type = ""
+        <%= vm_provider %>.security_groups = ""
+        <%= vm_provider %>.iam_instance_profile_name = ""
+
+        <%= vm_provider %>.block_device_mapping = [{ 'DeviceName' => '/dev/xvda', 'Ebs.VolumeSize' => 20 }]
+        <%= vm_provider %>.tags = {
+            'Name' => ''
+        }
+
+        override.ssh.private_key_path = ""
+    end

@@ -4,7 +4,7 @@ class Vbuilder
     class Generator
         class Application
             class << self
-                include ShellWords
+                include Shellwords
 
                 def run!(*arguments)
                     options = build_options(arguments)
@@ -22,6 +22,12 @@ class Vbuilder
                     if options[:show_help]
                         $stderr.puts options.opts
                         return 1
+                    end
+
+                    begin
+                        generator = Vbuilder::Generator.new(options)
+                        generator.run
+                        return 0
                     end
                 end
 

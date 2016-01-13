@@ -16,7 +16,7 @@ class Vbuilder
                         self[:provider] = provider
                     end
 
-                    o.seperator = ""
+                    o.separator ""
                 end
 
                 begin

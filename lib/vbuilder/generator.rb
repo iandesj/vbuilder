@@ -6,12 +6,14 @@ class Vbuilder
         require 'vbuilder/generator/options'
         require 'vbuilder/generator/application'
 
-        attr_accessor :options
+        attr_accessor :options, :provider
 
         def initialize(options = {})
-            self.options = options
+            @options = options
+            @provider = options[:provider]
+        end
 
-            self.provider = options[:provider]
+        def run
         end
     end
 end
