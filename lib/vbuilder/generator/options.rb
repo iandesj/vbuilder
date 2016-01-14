@@ -12,6 +12,11 @@ class Vbuilder
                 @opts = OptionParser.new do |o|
                     o.banner = "Usage: #{File.basename($0)} [options]\ne.g. #{File.basename($0)} --provider aws"
 
+                    o.on('-v', '--version', 'show ruby gem version') do |ver|
+                        puts"Version: #{Vbuilder::Version.version}"
+                        exit
+                    end
+
                     o.on('-i', '--interactive', 'choose to interactively fill these config attributes out on the CLI') do
                         self[:interactive] = true
                     end
