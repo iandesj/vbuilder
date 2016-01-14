@@ -12,7 +12,6 @@ class Vbuilder
                     if options[:invalid_argument]
                         $stderr.puts options[:invalid_argument]
                         options[:show_help] = true
-                        return 1
                     end
 
                     if options[:show_version]

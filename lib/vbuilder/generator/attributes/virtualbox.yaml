@@ -1,0 +1,14 @@
+# YAML Containing attributes to build basic Vagrantfile with aws as provider
+
+dependencies: ["vagrant-aws"]
+provider: aws
+access_key_id:
+secret_access_key:
+session_token:
+keypair_name:
+ami:
+instance_type:
+security_groups: []
+iam_instance_profile_name:
+ebs_volume_size: 8
+tags: []

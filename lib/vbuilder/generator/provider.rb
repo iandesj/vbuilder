@@ -22,12 +22,13 @@ class Vbuilder
                 t.result(binding)
             end
 
-            # WIP: fix so if dependencies are not installed, gem execution quites
             def check_dependencies
                 installed = `vagrant plugin list`
                 @dependencies.each do |dependency|
                     if !installed.include? dependency
-                        return 1
+                        puts "Unmet dependency"
+                        puts "Missing plugin '#{dependency}'"
+                        exit 1
                     end
                 end
             end
