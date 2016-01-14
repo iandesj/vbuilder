@@ -1,17 +1,16 @@
-    config.vm.provider :<%= vm_provider %> do |<%= vm_provider %>, override|
-        <%= vm_provider %>.access_key_id = ""
-        <%= vm_provider %>.secret_access_key = ""
-        <%= vm_provider %>.keypair_name = ""
+    config.vm.provider :<%= @provider %> do |<%= @provider %>, override|
+        <%= @provider %>.access_key_id = "<%= @access_key_id %>"
+        <%= @provider %>.secret_access_key = "<%= @secret_access_key %>"
+        <%= @provider %>.keypair_name = "<%= @keypair_name %>"
 
-        <%= vm_provider %>.ami = ""
-        <%= vm_provider %>.instance_type = ""
-        <%= vm_provider %>.security_groups = ""
-        <%= vm_provider %>.iam_instance_profile_name = ""
+        <%= @provider %>.ami = "<%= @ami %>"
+        <%= @provider %>.instance_type = "<%= @instance_type %>"
+        <%= @provider %>.security_groups = <%= @security_groups %>
+        <%= @provider %>.iam_instance_profile_name = "<%= @iam_instance_profile_name %>"
 
-        <%= vm_provider %>.block_device_mapping = [{ 'DeviceName' => '/dev/xvda', 'Ebs.VolumeSize' => 20 }]
-        <%= vm_provider %>.tags = {
+        <%= @provider %>.block_device_mapping = [{ 'DeviceName' => '/dev/xvda', 'Ebs.VolumeSize' => <%= @ebs_volume_size %> }]
+        <%= @provider %>.tags = {
             'Name' => ''
         }
-
         override.ssh.private_key_path = ""
     end
