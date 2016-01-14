@@ -17,8 +17,14 @@ class Vbuilder
         end
 
         def run
+            # get provider attributes from correct yaml file
             provider_attrs = get_provider_attrs
+
+            # create new provider based on provider attributes
             provider = Vbuilder::Generator::Provider.new(provider_attrs)
+
+            # check provider dependencies before moving on
+            provider.check_dependencies
 
             template_file = get_template_file
 
@@ -32,10 +38,14 @@ class Vbuilder
         # Helper functions
         # TODO: Move these functions to lib/helpers.rb
         def get_provider_attrs
-            attrs_file = "../generator/attributes/#{@provider}.yaml"
-            attrs_file = File.expand_path(attrs_file, __FILE__)
+            begin
+                attrs_file = "../generator/attributes/#{@provider}.yaml"
+                attrs_file = File.expand_path(attrs_file, __FILE__)
 
-            YAML.load(File.read(attrs_file))
+                YAML.load(File.read(attrs_file))
+            rescue
+                puts "Provider not found. Vagrantfile will not be generated."
+            end
         end
 
         def get_template_file
