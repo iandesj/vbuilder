@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.description   = %q{Easily create your Vagrantfiles based on the given provider}
   spec.summary       = %q{Create Vagrantfiles}
-  spec.homepage      = "https://rubygems.org/gems/vbuilder"
+  spec.homepage      = "https://github.com/iandesj/vbuilder"
 
   spec.license       = "MIT"
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
