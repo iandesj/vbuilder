@@ -55,6 +55,10 @@ class Vbuilder
                                 attributes[key] = cli.ask("#{key}: ", Integer)
                             when Float
                                 attributes[key] = cli.ask("#{key}: ", Float)
+                            when TrueClass
+                                attributes[key] = cli.ask("#{key} - (true or false): ")
+                            when FalseClass
+                                attributes[key] = cli.ask("#{key} - (true or false): ")
                             else
                                 puts attributes[key].class
                         end

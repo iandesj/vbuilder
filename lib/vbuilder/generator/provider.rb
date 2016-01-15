@@ -25,14 +25,17 @@ class Vbuilder
 
             def check_dependencies
                 installed = `vagrant plugin list`
-                @meta[:dependencies].each do |dependency|
-                    if !installed.include? dependency
-                        puts "Unmet dependency"
-                        puts "Missing plugin '#{dependency}'"
-                        exit 1
+                if @meta[:dependencies].count > 0
+                    @meta[:dependencies].each do |dependency|
+                        if !installed.include? dependency
+                            puts "Unmet dependency"
+                            puts "Missing plugin '#{dependency}'"
+                            exit 1
+                        end
                     end
                 end
             end
+
         end
     end
 end

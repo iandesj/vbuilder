@@ -1,0 +1,21 @@
+  config.vm.provider :virtualbox do |v|
+    v.name = "<%= @name %>"
+    v.gui = <%= @gui %>
+    v.linked_clone = <%= @linked_clone %>
+
+    # Vagrant exposes a way to call any command against VBoxManage just prior to booting the machine.
+    # More documentation here https://docs.vagrantup.com/v2/virtualbox/configuration.html
+    # Multiple customize directives can be used.
+    # v.customize []
+
+    # There are some convenience shortcuts for memory and CPU settings
+    # v.memory = 1024
+    # v.cpus = 2
+  end
+
+  # More docs about virtualbox networking with vagrant here https://docs.vagrantup.com/v2/virtualbox/networking.html
+  # The VirtualBox provider supports using the private network as a VirtualBox internal network. 
+  # By default, private networks are host-only networks, because those are the easiest to work with. 
+  # However, internal networks can be enabled as well.
+  # config.vm.network "private_network", ip: "192.168.50.4",
+    # virtualbox__intnet: true
