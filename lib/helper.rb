@@ -41,10 +41,11 @@ class Vbuilder
 
         module Cli
 
+            # this method gets kicked off when the user chooses to interactively create it
             def self.start_cli(attributes)
                 cli = HighLine.new
                 attributes.each do |key, value|
-                    if key != "dependencies" && key != "provider"
+                    if key != "meta"
                         case attributes[key]
                             when Array
                                 attributes[key] = cli.ask("#{key} - (comma sep list) :", lambda { |val|val.split(/,\s*/)  })

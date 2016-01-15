@@ -1,16 +1,16 @@
-    config.vm.provider :<%= @provider %> do |<%= @provider %>, override|
-        <%= @provider %>.access_key_id = "<%= @access_key_id %>"
-        <%= @provider %>.secret_access_key = "<%= @secret_access_key %>"
-        <%= @provider %>.keypair_name = "<%= @keypair_name %>"
+  config.vm.provider :<%= @meta[:provider] %> do |<%= @meta[:provider] %>, override|
+    <%= @meta[:provider] %>.access_key_id = "<%= @access_key_id %>"
+    <%= @meta[:provider] %>.secret_access_key = "<%= @secret_access_key %>"
+    <%= @meta[:provider] %>.keypair_name = "<%= @keypair_name %>"
 
-        <%= @provider %>.ami = "<%= @ami %>"
-        <%= @provider %>.instance_type = "<%= @instance_type %>"
-        <%= @provider %>.security_groups = <%= @security_groups %>
-        <%= @provider %>.iam_instance_profile_name = "<%= @iam_instance_profile_name %>"
+    <%= @meta[:provider] %>.ami = "<%= @ami %>"
+    <%= @meta[:provider] %>.instance_type = "<%= @instance_type %>"
+    <%= @meta[:provider] %>.security_groups = <%= @security_groups %>
+    <%= @meta[:provider] %>.iam_instance_profile_name = "<%= @iam_instance_profile_name %>"
 
-        <%= @provider %>.block_device_mapping = [{ 'DeviceName' => '/dev/xvda', 'Ebs.VolumeSize' => <%= @ebs_volume_size %> }]
-        <%= @provider %>.tags = {
-            'Name' => ''
-        }
-        override.ssh.private_key_path = ""
-    end
+    <%= @meta[:provider] %>.block_device_mapping = [{ 'DeviceName' => '/dev/xvda', 'Ebs.VolumeSize' => <%= @ebs_volume_size %> }]
+    <%= @meta[:provider] %>.tags = {
+        'Name' => ''
+    }
+    override.ssh.private_key_path = ""
+  end
