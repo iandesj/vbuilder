@@ -19,6 +19,7 @@ class Vbuilder
                 file = File.expand_path(template_file, __FILE__)
                 content = File.read(file)
                 t = ERB.new(content)
+
                 t.result(binding)
             end
 

@@ -44,14 +44,19 @@ class Vbuilder
             def self.start_cli(attributes)
                 cli = HighLine.new
                 attributes.each do |key, value|
-                    type = attributes[key].class
-                    case type
-                        when Array
-                        when String
-                            attributes[key] = cli.ask("#{key}: ")
-                        when Fixnum
-                        when Float
-                        else
+                    if key != "dependencies" && key != "provider"
+                        case attributes[key]
+                            when Array
+                                attributes[key] = cli.ask("#{key} - (comma sep list) :", lambda { |val|val.split(/,\s*/)  })
+                            when String
+                                attributes[key] = cli.ask("#{key}: ")
+                            when Fixnum
+                                attributes[key] = cli.ask("#{key}: ", Integer)
+                            when Float
+                                attributes[key] = cli.ask("#{key}: ", Float)
+                            else
+                                puts attributes[key].class
+                        end
                     end
                 end
 
