@@ -1,28 +1,51 @@
 # Vbuilder
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/vbuilder`. To experiment with that code, run `bin/console` for an interactive prompt.
+Vbuilder is a project I started to dynamically create Vagrantfile configurations or simple skeleton Vagrantfiles, based on the given provider (virtualbox, vmware, aws, etc). Right now, since each vagrant provider can be configured in different ways, with different attributes, I'm stashing those attributes in a YAML file that gets loaded in when a valid provider is given. I also have custom templates for those providers that get injected into the 'master' Vagrantfile template. If there are defaults in the configurations, these will be the values in the generated template, unless the user chooses to interactively fill out the Vagrantfile in the CLI with interactive mode.
 
-TODO: Delete this and the text above, and describe your gem
+## TODO
+- [x] Interactive vagrantfile building
+- [x] aws provider
+- [x] virtualbox provider
+- [ ] vmware provider
+- [ ] docker provider
+- [ ] ability to load custom providers attributes via cli
+- [ ] ability to load custom provider templates via cli
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'vbuilder'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+install it yourself as:
 
     $ gem install vbuilder
 
 ## Usage
 
-TODO: Write usage instructions here
+To list all currently available vagrant providers, run this:
+```bash
+$ vbuilder -P
+     or
+$ vbuilder --providers
+```
+** currently only 'aws' and 'virtualbox' are supported for Vagrantfile generation. More to come soon.
+
+To generate a simple Vagrantfile based on a provider, granted that provider is valid, run this:
+```bash
+$ vbuilder --provider <some provider>
+```
+
+To generate a Vagrantfile interactively on the CLI, with a given provider, run this:
+```bash
+$ vbuilder -i --provider <some provider>
+     or
+$ vbuilder --interactive --provider <some provider>
+```
+
+...and of course, for the help menu, run this:
+```bash
+$ vbuilder --help
+     or
+$ vbuilder -h
+```
 
 ## Development
 
@@ -32,7 +55,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/vbuilder. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/iandesj/vbuilder. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
