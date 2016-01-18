@@ -1,0 +1,8 @@
+# attributes for virtualbox provider
+
+meta:
+  :dependencies: []
+  :provider: virtualbox
+name: ""
+gui: false
+linked_clone: false
